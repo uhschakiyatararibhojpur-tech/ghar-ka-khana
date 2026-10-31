@@ -1,0 +1,24 @@
+
+{
+  "name": "घर का खाना - Piro",
+  "short_name": "घर का खाना",
+  "description": "घर जैसा स्वादिष्ट खाना, पिरो में।",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#fffaf0",
+  "theme_color": "#8b4513",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "./icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "./icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
