@@ -69,6 +69,18 @@
     <div class="modal">
       <div class="drawer-head"><div><span class="eyebrow">बस आख़िरी कदम</span><h2>डिलीवरी की जानकारी</h2></div><button class="icon-btn" id="checkoutClose">✕</button></div>
       <form id="checkoutForm">
+        <div class="location-box">
+  <h3>📍 डिलीवरी लोकेशन जाँचें</h3>
+  <p>ऑर्डर करने से पहले अपना मोबाइल लोकेशन जाँचें।</p>
+
+  <button type="button" class="btn light full" id="checkLocation">
+    📍 मेरी लोकेशन जाँचें
+  </button>
+
+  <p id="locationMessage" class="form-message">
+    अभी लोकेशन की जाँच नहीं हुई है।
+  </p>
+</div>
         <label>आपका नाम <input name="customer_name" required placeholder="जैसे: पूजा देवी" maxlength="80"></label>
         <label>मोबाइल नंबर <input name="phone" required inputmode="numeric" pattern="[6-9][0-9]{9}" placeholder="10 अंकों का मोबाइल नंबर"></label>
         <label>पूरा पता <textarea name="address" required rows="3" placeholder="मोहल्ला, गाँव/शहर, नज़दीकी पहचान…" maxlength="500"></textarea></label>
