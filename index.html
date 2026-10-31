@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="hi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#7b2e1c">
+  <meta name="description" content="घर का खाना — बिहार का स्वाद, घर जैसा प्यार। ताज़ा नाश्ता, दोपहर और रात का खाना।">
+  <title>घर का खाना | बिहार का देसी स्वाद</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Hind:wght@400;500;600;700;800&family=Baloo+2:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="topline">🌿 ताज़ा बना • घर जैसा स्वाद • आपके घर तक</div>
+  <header class="site-header">
+    <a class="brand" href="#"><span class="brand-mark">🍲</span><span><b>घर का खाना</b><small>बिहार का देसी स्वाद</small></span></a>
+    <nav><a href="#menu">मेन्यू</a><a href="#how">कैसे मँगाएँ?</a><a href="#contact">संपर्क</a></nav>
+    <button class="cart-open" id="cartOpen">🛒 <span>टोकरी</span> <b id="cartCount">0</b></button>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <span class="eyebrow">अपने घर जैसा खाना</span>
+        <h1>भूख लगी है?<br><em>घर का खाना</em> मँगाइए!</h1>
+        <p>ताज़ा बना बिहारी नाश्ता, दोपहर का खाना और रात का खाना। साफ़-सुथरा, स्वादिष्ट और प्यार से बनाया हुआ।</p>
+        <div class="hero-actions"><a class="btn primary" href="#menu">खाना देखें</a><a class="btn light" href="#how">कैसे ऑर्डर करें?</a></div>
+        <div class="trust-row"><span>🥘 रोज़ ताज़ा</span><span>🏡 घर जैसा स्वाद</span><span>🚲 घर तक डिलीवरी*</span></div>
+      </div>
+      <div class="hero-art"><div class="sun"></div><div class="plate"><span>🍛</span></div><div class="floating f1">रोटी • दाल</div><div class="floating f2">ताज़ा और स्वादिष्ट</div></div>
+    </section>
+
+    <section class="menu-section section" id="menu">
+      <div class="section-heading"><div><span class="eyebrow">आज क्या खाएँगे?</span><h2>अपना खाना चुनिए</h2><p>नीचे दिए गए खाने में से पसंद का खाना टोकरी में डालें।</p></div><div class="today-note">🕒 आज का मेन्यू</div></div>
+      <div class="meal-tabs" id="mealTabs">
+        <button class="tab active" data-meal="all">सब खाना</button>
+        <button class="tab" data-meal="breakfast">🌅 नाश्ता</button>
+        <button class="tab" data-meal="lunch">☀️ दोपहर</button>
+        <button class="tab" data-meal="dinner">🌙 रात</button>
+      </div>
+      <div class="menu-grid" id="menuGrid"><div class="loading">मेन्यू लोड हो रहा है…</div></div>
+    </section>
+
+    <section class="how-section section" id="how">
+      <div class="section-heading centered"><span class="eyebrow">बहुत आसान है</span><h2>खाना कैसे मँगाएँ?</h2><p>बस तीन आसान कदम।</p></div>
+      <div class="steps">
+        <article><span>1</span><div class="step-icon">🍱</div><h3>खाना चुनें</h3><p>अपनी पसंद का नाश्ता, लंच या डिनर चुनें।</p></article>
+        <article><span>2</span><div class="step-icon">🛒</div><h3>टोकरी में डालें</h3><p>जितना खाना चाहिए, उतनी मात्रा चुनें।</p></article>
+        <article><span>3</span><div class="step-icon">🏠</div><h3>पता लिखें</h3><p>अपना नाम, मोबाइल और घर का पता भरकर ऑर्डर करें।</p></article>
+      </div>
+    </section>
+
+    <section class="promise section">
+      <div><span class="eyebrow">हमारा वादा</span><h2>खाना घर जैसा,<br>स्वाद अपने बिहार का ❤️</h2><p>हर दिन ताज़ा खाना बनाने की कोशिश। मेन्यू और उपलब्धता रोज़ बदल सकती है।</p></div>
+      <div class="promise-points"><p>✓ साफ़-सुथरी तैयारी</p><p>✓ देसी बिहारी स्वाद</p><p>✓ ऑर्डर की पुष्टि फोन पर</p></div>
+    </section>
+  </main>
+
+  <footer id="contact"><div class="footer-brand">🍲 घर का खाना</div><p>बिहार का देसी स्वाद — आपके घर तक।</p><div class="footer-contact" id="footerContact">ऑर्डर या जानकारी के लिए हमें कॉल करें।</div><small>© <span id="year"></span> घर का खाना</small></footer>
+
+  <div class="overlay" id="overlay"></div>
+  <aside class="cart-drawer" id="cartDrawer" aria-label="आपकी टोकरी">
+    <div class="drawer-head"><div><span class="eyebrow">आपका ऑर्डर</span><h2>खाने की टोकरी</h2></div><button class="icon-btn" id="cartClose">✕</button></div>
+    <div class="cart-items" id="cartItems"><p class="empty">अभी टोकरी खाली है।</p></div>
+    <div class="cart-bottom"><div class="total-line"><span>कुल रकम</span><b id="cartTotal">₹0</b></div><p class="muted">डिलीवरी शुल्क और उपलब्धता फोन पर बताए जाएँगे। सेवा क्षेत्र: पीरो, भोजपुर।</p><button class="btn primary full" id="checkoutOpen">ऑर्डर आगे बढ़ाएँ</button></div>
+  </aside>
+
+  <div class="modal-wrap" id="checkoutModal">
+    <div class="modal">
+      <div class="drawer-head"><div><span class="eyebrow">बस आख़िरी कदम</span><h2>डिलीवरी की जानकारी</h2></div><button class="icon-btn" id="checkoutClose">✕</button></div>
+      <form id="checkoutForm">
+        <label>आपका नाम <input name="customer_name" required placeholder="जैसे: पूजा देवी" maxlength="80"></label>
+        <label>मोबाइल नंबर <input name="phone" required inputmode="numeric" pattern="[6-9][0-9]{9}" placeholder="10 अंकों का मोबाइल नंबर"></label>
+        <label>पूरा पता <textarea name="address" required rows="3" placeholder="मोहल्ला, गाँव/शहर, नज़दीकी पहचान…" maxlength="500"></textarea></label>
+        <label>भुगतान कैसे करेंगे?
+          <select name="payment_method"><option value="cash_on_delivery">खाना मिलने पर नकद</option><option value="upi_on_delivery">खाना मिलने पर UPI</option></select>
+        </label>
+        <label>किस समय चाहिए?
+          <select name="meal_time"><option value="जितना जल्दी हो सके">जितना जल्दी हो सके</option><option value="नाश्ता">नाश्ता</option><option value="दोपहर का खाना">दोपहर का खाना</option><option value="रात का खाना">रात का खाना</option></select>
+        </label>
+        <label>खास बात (ज़रूरी नहीं) <textarea name="note" rows="2" placeholder="कम तीखा, बिना प्याज़ आदि…" maxlength="300"></textarea></label>
+        <div class="payment-note">💵 अभी भुगतान खाना मिलने पर नकद (Cash on Delivery) करें।</div>
+        <button class="btn primary full" type="submit" id="placeOrder">ऑर्डर भेजें</button>
+        <p class="form-message" id="formMessage"></p>
+      </form>
+    </div>
+  </div>
+  <div class="toast" id="toast"></div>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="config.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
