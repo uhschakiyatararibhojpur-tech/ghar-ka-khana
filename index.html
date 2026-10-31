@@ -104,5 +104,16 @@
   <script src="config.js"></script>
 <script src="geofence.js"></script>
 <script src="app.js"></script>
+  
+<script>
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("./service-worker.js")
+      .then(() => console.log("Ghar Ka Khana app ready"))
+      .catch(error => console.error("Service Worker Error:", error));
+  });
+}
+</script>
+
 </body>
 </html>
