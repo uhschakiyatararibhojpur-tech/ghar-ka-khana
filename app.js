@@ -1,3 +1,4 @@
+
 (() => {
   "use strict";
 
@@ -100,6 +101,42 @@
     el.style.color = color;
   }
 
+  // Get fresh GPS coordinates from the customer's device.
+  function getCustomerLocation() {
+    return new Promise((resolve, reject) => {
+      if (!navigator.geolocation) {
+        reject(new Error("आपके ब्राउज़र में GPS सुविधा उपलब्ध नहीं है।"));
+        return;
+      }
+
+      navigator.geolocation.getCurrentPosition(
+        position => {
+          resolve({
+            latitude: position.coords.latitude,
+            longitude: position.coords.longitude,
+            accuracy: position.coords.accuracy
+          });
+        },
+        error => {
+          const messages = {
+            1: "लोकेशन की अनुमति दें और फिर ऑर्डर करें।",
+            2: "आपकी लोकेशन नहीं मिल सकी। दोबारा कोशिश करें।",
+            3: "लोकेशन जाँच में समय लगा। दोबारा कोशिश करें।"
+          };
+
+          reject(new Error(
+            messages[error.code] || "लोकेशन जाँच नहीं हो सकी।"
+          ));
+        },
+        {
+          enableHighAccuracy: true,
+          timeout: 20000,
+          maximumAge: 30000
+        }
+      );
+    });
+  }
+
   function whatsappLink(order) {
     const number = String(cfg.WHATSAPP_NUMBER || "").replace(/\D/g, "");
     if (!number) return "";
@@ -163,10 +200,25 @@
     }
 
     button.disabled = true;
-    button.textContent = "ऑर्डर भेजा जा रहा है…";
+    button.textContent = "लोकेशन जाँची जा रही है…";
     showMessage("", "#287344");
 
     try {
+      // Attach GPS coordinates to the order.
+      const location = await getCustomerLocation();
+
+      order.latitude = location.latitude;
+      order.longitude = location.longitude;
+      order.accuracy = location.accuracy;
+
+      if (location.accuracy > 1000) {
+        throw new Error(
+          "आपकी GPS लोकेशन साफ़ नहीं है। कृपया दोबारा जाँचें।"
+        );
+      }
+
+      button.textContent = "ऑर्डर भेजा जा रहा है…";
+
       await fetch(endpoint, {
         method: "POST",
         mode: "no-cors",
@@ -180,7 +232,7 @@
       const msg = $("#formMessage");
 
       msg.textContent =
-        "ऑर्डर भेजने का अनुरोध किया गया है। कृपया WhatsApp पर मालिक को जानकारी भेजें। Google Sheet में ऑर्डर सेव होने की जाँच करें।";
+        "ऑर्डर अनुरोध भेजा गया है। Google Sheet में सेव होने की जाँच करें और मालिक को WhatsApp पर जानकारी भेजें।";
 
       msg.style.color = "#287344";
 
@@ -207,7 +259,7 @@
 
     } catch (error) {
       console.error(error);
-      showMessage("ऑर्डर नहीं जा सका। इंटरनेट जाँचें या फोन करें।");
+      showMessage(error.message || "ऑर्डर नहीं जा सका।");
       button.disabled = false;
       button.textContent = "दोबारा कोशिश करें";
     }
